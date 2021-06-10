@@ -2,6 +2,10 @@ img {
   max-width: 100%;
 }
 
+img.big-image {
+  max-width: 33%;
+}
+
 .custom-row {
   max-width: 100%;
   width: 100%;
@@ -33,5 +37,9 @@ img {
 @media (max-width: 768px) {
   .custom-row-item {
     max-width: calc(calc(100% - 2em) / 5);
+  }
+
+  img.big-image {
+    max-width: 50%;
   }
 }
