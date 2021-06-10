@@ -7,15 +7,15 @@ img {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: space-between;
   align-content: center;
   align-items: center;
 }
 
 .custom-row-item {
-  max-width: 15%;
+  max-width: 10%;
   height: auto;
-  margin: 0 0.5em;
+  /* margin: 0 0.5em; */
 }
 
 .custom-clickable-img {
