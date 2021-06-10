@@ -1,0 +1,33 @@
+img {
+  max-width: 100%;
+}
+
+.custom-row {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.custom-row-item {
+  max-width: 15%;
+  height: auto;
+  margin: 0 0.5em;
+}
+
+.custom-clickable-img {
+  cursor: pointer;
+}
+
+.custom-clickable-img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .custom-row-item {
+    max-width: calc(calc(100% - 2em) / 5);
+  }
+}
