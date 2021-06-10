@@ -26,6 +26,14 @@ img.big-image {
   max-width: 33%;
 }
 
+.big-image-container {
+  margin: 2em 0;
+}
+
+.button-container {
+  margin: 4em 0;
+}
+
 .custom-row {
   max-width: 100%;
   width: 100%;

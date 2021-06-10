@@ -4,12 +4,12 @@ $(window).on("startMoodJournal", () => {
 
     template: `
       <div>
-        <p class="text-center" v-if="chosenOption">
+        <p class="text-center big-image-container" v-if="chosenOption">
           <img :src="chosenOption.image" class="big-image">
         </p>
 
         <form @submit.prevent="submit">
-          <p>
+          <p class="slider-container">
             <input type="range" min="0" max="100" step="1" v-model="mood">
           </p>
 
@@ -19,12 +19,14 @@ $(window).on("startMoodJournal", () => {
             </div>
           </div>
 
-          <input
-            class="btn btn-default btn-lg btn-block"
-            type="submit"
-            :value="chosenOption.text.toUpperCase() + ' →'"
-            v-if="chosenOption"
-          />
+          <div class="button-container">
+            <input
+              class="btn btn-default btn-lg btn-block"
+              type="submit"
+              :value="chosenOption.text.toUpperCase() + ' →'"
+              v-if="chosenOption"
+            />
+          </div>
         </form>
       </div>
     `,
