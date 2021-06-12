@@ -52,6 +52,13 @@ module.exports = Vue.component("slider", {
     }
   },
 
+  watch: {
+    startValue: function () {
+      const self = this
+      self.value = self.startValue
+    },
+  },
+
   computed: {
     percent: function () {
       const self = this
