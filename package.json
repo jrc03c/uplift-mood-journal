@@ -1,0 +1,23 @@
+{
+  "name": "mood-journal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build": "watchify -e res/js/src/main.js -o res/js/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrc03c/uplift-mood-journal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrc03c/uplift-mood-journal/issues"
+  },
+  "homepage": "https://github.com/jrc03c/uplift-mood-journal#readme",
+  "dependencies": {
+    "vue": "^2.6.14"
+  }
+}

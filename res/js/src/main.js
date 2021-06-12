@@ -1,3 +1,5 @@
+const Vue = require("vue/dist/vue.min.js")
+
 $(window).on("startMoodJournal", () => {
   const app = new Vue({
     el: "#mood-journal",
@@ -41,35 +43,35 @@ $(window).on("startMoodJournal", () => {
           min: 0,
           max: 14,
           text: "not so good",
-          image: "img/mood0.png",
+          image: "res/img/mood0.png",
         },
         {
           value: 1,
           min: 15,
           max: 37,
           text: "so-so",
-          image: "img/mood1.png",
+          image: "res/img/mood1.png",
         },
         {
           value: 2,
           min: 38,
           max: 62,
           text: "okay",
-          image: "img/mood2.png",
+          image: "res/img/mood2.png",
         },
         {
           value: 3,
           min: 63,
           max: 85,
           text: "pretty good",
-          image: "img/mood3.png",
+          image: "res/img/mood3.png",
         },
         {
           value: 4,
           min: 86,
           max: 100,
           text: "wonderful",
-          image: "img/mood4.png",
+          image: "res/img/mood4.png",
         },
       ],
     },
