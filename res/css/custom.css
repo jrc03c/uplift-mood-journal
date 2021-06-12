@@ -62,6 +62,11 @@ img.big-image {
   transform: scale(1.2);
 }
 
+.slider,
+.slider * {
+  user-select: none;
+}
+
 @media (max-width: 768px) {
   .custom-row-item {
     max-width: calc(calc(100% - 2em) / 5);

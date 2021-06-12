@@ -13,7 +13,7 @@ $(window).on("startMoodJournal", () => {
 
         <form @submit.prevent="submit">
           <p class="slider-container">
-            <slider></slider>
+            <slider min="0" max="100" step="1" :start-value="mood" @input="onSliderInput"></slider>
           </p>
 
           <div class="custom-row">
@@ -90,6 +90,11 @@ $(window).on("startMoodJournal", () => {
     },
 
     methods: {
+      onSliderInput: function (value) {
+        const self = this
+        self.mood = value
+      },
+
       submit: function () {
         const self = this
 

@@ -26,7 +26,7 @@ module.exports = Vue.component("slider", {
   template: /*html*/ `
     <div class="slider-answer-widget">
       <div class="slider slider-horizontal">
-        <div class="slider-track">
+        <div class="slider-track" @mousedown="onMouseDown" ref="track">
           <div class="slider-track-low" style="left: 0px; width: 0%;"></div>
           <div class="slider-selection" :style="sliderSelectionStyle"></div>
           <div class="slider-track-high" :style="sliderTrackHighStyle"></div>
@@ -34,13 +34,12 @@ module.exports = Vue.component("slider", {
 
         <div class="tooltip tooltip-main top in" role="presentation" :style="tooltipAndHandleStyle">
           <div class="tooltip-arrow"></div>
-          <div class="tooltip-inner">{{ value }}</div>
+          <div class="tooltip-inner">
+            {{ value }}
+          </div>
         </div>
 
-        <div class="slider-handle min-slider-handle round" role="slider" :aria-valuemin="min" :aria-valuemax="max" :style="tooltipAndHandleStyle" :aria-valuenow="value" tabindex="0">
-        </div>
-
-        <div class="slider-handle max-slider-handle round hide" role="slider" :aria-valuemin="min" :aria-valuemax="max" style="tooltipAndHandleStyle" :aria-valuenow="value" tabindex="0">
+        <div class="slider-handle min-slider-handle round" role="slider" :aria-valuemin="min" :aria-valuemax="max" :style="tooltipAndHandleStyle" :aria-valuenow="value" tabindex="0" @mousedown="onMouseDown">
         </div>
       </div>
     </div>
@@ -49,6 +48,7 @@ module.exports = Vue.component("slider", {
   data: function () {
     return {
       value: 50,
+      isBeingDragged: false,
     }
   },
 
@@ -74,10 +74,40 @@ module.exports = Vue.component("slider", {
     },
   },
 
+  methods: {
+    onMouseDown: function (event) {
+      const self = this
+      self.isBeingDragged = true
+      self.onMouseMove(event)
+    },
+
+    onMouseMove: function (event) {
+      const self = this
+      if (!self.isBeingDragged) return
+      const trackRect = self.$refs.track.getBoundingClientRect()
+      const newPercent = (event.clientX - trackRect.left) / trackRect.width
+      self.value = parseInt(newPercent * (self.max - self.min))
+      if (self.value < self.min) self.value = self.min
+      if (self.value > self.max) self.value = self.max
+      self.$emit("input", self.value)
+    },
+
+    onMouseUp: function () {
+      const self = this
+      self.isBeingDragged = false
+    },
+  },
+
   mounted: function () {
     const self = this
     self.value = self.startValue
+    window.addEventListener("mousemove", self.onMouseMove)
+    window.addEventListener("mouseup", self.onMouseUp)
   },
 
-  beforeDestroy: function () {},
+  beforeDestroy: function () {
+    const self = this
+    window.removeEventListener("mousemove", self.onMouseMove)
+    window.removeEventListener("mouseup", self.onMouseUp)
+  },
 })
