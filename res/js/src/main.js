@@ -1,10 +1,11 @@
 const Vue = require("vue/dist/vue.min.js")
+const SliderComponent = require("./components/slider.js")
 
 $(window).on("startMoodJournal", () => {
   const app = new Vue({
     el: "#mood-journal",
 
-    template: `
+    template: /*html*/ `
       <div>
         <p class="text-center big-image-container" v-if="chosenOption">
           <img :src="chosenOption.image" class="big-image">
@@ -12,7 +13,7 @@ $(window).on("startMoodJournal", () => {
 
         <form @submit.prevent="submit">
           <p class="slider-container">
-            <input type="range" min="0" max="100" step="1" v-model="mood">
+            <slider></slider>
           </p>
 
           <div class="custom-row">
