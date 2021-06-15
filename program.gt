@@ -1,0 +1,51 @@
+*events
+	endMoodJournal
+		>> mood = it["mood"]
+		>> moodImage = it["image"]
+		
+		*goto: followUpLabel
+			*reset
+
+-------------
+-- JOURNAL --
+-------------
+
+*label: startLabel
+
+*header: Mood Journal
+
+How are you feeling today?
+
+*html
+	<div id="mood-journal"></div>
+	
+*trigger: startMoodJournal
+*wait
+
+---------------
+-- FOLLOW-UP --
+---------------
+
+*label: followUpLabel
+
+*header: Done!
+
+You said you're feeling:
+
+*html
+	<div class="text-center big-image-container">
+		<img src="{moodImage}" class="big-image">
+	</div>
+	
+(Specifically, you gave your mood a score of {mood} out of 100.)
+
+*button: Yep, that's true!
+
+-------------
+-- RESTART --
+-------------
+
+*question: Do you want to start over?
+	Yes
+		*goto: startLabel
+	No
